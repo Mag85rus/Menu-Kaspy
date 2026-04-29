@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Микрошпаргалка | Стандарт ULTIMA  | Доставка</title>
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f7ff;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #0a2540;
+            line-height: 1.4;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeSlideUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-block {
+            animation: fadeSlideUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.05s; }
+        .delay-2 { animation-delay: 0.15s; }
+        .delay-3 { animation-delay: 0.25s; }
+        .delay-4 { animation-delay: 0.35s; }
+        .delay-5 { animation-delay: 0.45s; }
+
+        .header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .badge {
+            display: inline-block;
+            background: #d9efff;
+            color: #0070d9;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            letter-spacing: -0.2px;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #135b9f, #2c7ed1);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+        .sub {
+            font-size: 1rem;
+            color: #3a6b92;
+            max-width: 600px;
+            margin: 0.75rem auto 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            box-shadow: 0 12px 28px -8px rgba(0, 50, 90, 0.08), 0 0 0 1px rgba(0, 112, 217, 0.05);
+            padding: 1.5rem;
+            transition: all 0.25s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 115, 230, 0.12);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 40px -14px rgba(0, 102, 204, 0.2), 0 0 0 1px rgba(0, 149, 255, 0.2);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .check-green {
+            color: #1faf74;
+            background: #e0f5ec;
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .exclamation {
+            color: #dd6b20;
+            background: #fff0e0;
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ULTIMA -label {
+            background: #136b9c10;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #0f5b87;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        .rule-text {
+            font-weight: 500;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        .code-block {
+            background: #eef4fa;
+            border-radius: 18px;
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            border-left: 4px solid #2c7ed1;
+        }
+        .code-block img {
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+        }
+        .pill {
+            background: #e2edf9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .arrow-icon {
+            color: #2c7ed1;
+            margin: 0 0.2rem;
+        }
+        .step-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+        .step-num {
+            background: #d4e6ff;
+            width: 32px;
+            height: 32px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #1b66b3;
+            flex-shrink: 0;
+        }
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, #cce4ff, transparent);
+        }
+        .example-detail {
+            font-size: 0.85rem;
+            background: #f8fafd;
+            border-radius: 20px;
+            padding: 0.7rem;
+            margin-top: 1rem;
+        }
+        .badge-ULTIMA  {
+            background: #1e6eb0;
+            color: white;
+            font-size: 0.65rem;
+            border-radius: 50px;
+            padding: 0.2rem 0.7rem;
+            display: inline-block;
+        }
+        @media (max-width: 680px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .card { padding: 1.2rem; }
+        }
+        .hover-scale {
+            transition: transform 0.2s ease;
+        }
+        .card:hover .hover-scale {
+            transform: scale(1.02);
+        }
+        .std-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1b66b3;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header animate-block delay-1">
+        <div class="badge"><i class="fas fa-motorcycle"></i> ULTIMA  × Яндекс Еда</div>
+        <h1>📋 Стандарт доставки<br>«Микро-шпаргалка»</h1>
+        <div class="sub">Герметичная упаковка под запайку — главное правило, но есть исключения.</div>
+    </div>
+
+    <!-- Секция обозначений (2 главных значка) -->
+    <div class="grid-2">
+        <div class="card animate-block delay-2">
+            <div class="check-green hover-scale">
+                <i class="fas fa-check-circle fa-2x"></i>
+            </div>
+            <div class="rule-text">✅ Зелёная галочка</div>
+            <p>В стандарте указана зелёная галочка → доставка для <strong>ULTIMA  </strong> осуществляется <strong>в нашем контейнере</strong> (без замены).</p>
+            <div class="code-block">
+                <i class="fas fa-info-circle"></i> Пример: ✅<br>
+                «Упаковка: ПК-77 (+ крышка)» → ничего не меняем.
+            </div>
+        </div>
+        <div class="card animate-block delay-2">
+            <div class="exclamation hover-scale">
+                <i class="fas fa-exclamation-triangle fa-2x"></i>
+            </div>
+            <div class="rule-text">❗ Восклицательный знак / <span class="ULTIMA -label">ULTIMA  →</span></div>
+            <p>Требование использовать <strong>указанный контейнер под запайку</strong> (бокс под запайку). Игнорируем обычный контейнер с крышкой из стандарта.</p>
+            <div class="code-block">
+                <i class="fas fa-info-circle"></i> Пример: ⚠️ <br>
+                «ПК-77 (+ крышка) <strong> и ULTIMA  → ПК-47/1 (бокс под запайку)</strong>» → берём ПК-47/1.
+            </div>
+        </div>
+    </div>
+
+    <!-- Примеры из стандарта (реальные блюда) -->
+    <div style="margin-bottom: 1rem; margin-top: 0.5rem;">
+        <span class="pill"><i class="fas-regular fa-cube"></i> Живые примеры</span>
+        <h2 style="margin: 0.75rem 0 0.5rem; font-weight: 600;">⚡ Разбор блюд (ULTIMA )</h2>
+    </div>
+    <div class="grid-3">
+        <!-- Пример 1: Шоколадный медовик -->
+        <div class="card animate-block delay-3">
+            <i class="fas fa-cake-candles" style="font-size: 2rem; color: #ab7b54;"></i>
+            <h3 style="margin: 0.5rem 0 0.25rem;">🍫 Шоколадный медовик</h3>
+            <div class="code-block" style="background:#fff2e5;">
+                <span class="std-label">📄 Стандарт упаковки:</span>
+                <img src="foto1.png" alt="Стандарт: ПК-52/4Г, без секции (бокс под запайку)">
+            </div>
+            <div style="margin-top: 0.75rem;">
+                <span class="badge-ULTIMA "><i class="fas fa-check-circle"></i> ULTIMA -доставка</span>
+                <p style="margin-top: 0.5rem;">✅ Контейнер <strong>уже под запайку</strong> → используем <strong>ПК-52/4Г</strong> (без замен).<br>
+                <span class="pill"><i class="fas-regular fa-comment"></i> Исключений нет, всё по стандарту.</span></p>
+            </div>
+        </div>
+
+        <!-- Пример 2: Чизкейк Сан Себастьян с шоколадом -->
+        <div class="card animate-block delay-3">
+            <i class="fas fa-cheese" style="font-size: 2rem; color:#e3b87c;"></i>
+            <h3 style="margin: 0.5rem 0 0.25rem;">🍰 Чизкейк Сан Себастьян </h3>
+            <div class="code-block" style="background:#fff0e0;">
+                <span class="std-label">📄 Стандарт (ULTIMA  →):</span>
+                <img src="foto2.png" alt="Стандарт: ULTIMA  → ПК-47/1 (бокс под запайку), соусник 50 мл">
+            </div>
+            <div style="margin-top: 0.75rem;">
+                <span class="badge-ULTIMA "><i class="fas fa-tools"></i> Действие для ULTIMA </span>
+                <p><i class="fas fa-exchange-alt arrow-icon"></i> Меняем ПК-77 на <strong>ПК-47/1 (под запайку)</strong>.</p>
+                <div class="example-detail">
+                    <i class="fas fa-lightbulb"></i> <strong>Почему?</strong> ⚠️+ ULTIMA  → требуется контейнер под запайку.
+                </div>
+            </div>
+        </div>
+
+        <!-- Пример 3: Салат с кальмаром и шпинатом -->
+        <div class="card animate-block delay-3">
+            <i class="fas fa-salad" style="font-size: 2rem; color:#6fbf4c;"></i>
+            <h3 style="margin: 0.5rem 0 0.25rem;">🦑 Салат с кальмаром и шпинатом</h3>
+            <div class="code-block" style="background:#e8f0fe;">
+                <span class="std-label">📄 Стандарт (воскл. знаки):</span>
+                <img src="foto3.png" alt="Стандарт: ПК-78 (крышка) → ПК-52/4Г под запайку + соусник 50 мл">
+            </div>
+            <div style="margin-top: 0.75rem;">
+                <span class="badge-ULTIMA "><i class="fas fa-box-open"></i> Упаковка ULTIMA </span>
+                <p><i class="fas fa-exchange-alt arrow-icon"></i> Меняем ПК-78 на ПК-52/4Г (под запайку)</strong> + <strong>соусник 50 мл.</strong><br>
+                ❌ Не используем ПК-78</p>
+                <div class="example-detail">
+                    <i class="fas fa-clipboard-list"></i> В стандарте стоят 2х ⚠️ = используется два вида упаковки.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Алгоритм в 4 шага -->
+    <div class="card animate-block delay-4" style="margin-bottom: 1.5rem; background: rgba(255,255,245,0.95);">
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1.2rem;">
+            <i class="fas fa-diagram-project fa-xl" style="color: #2c7ed1;"></i>
+            <h2 style="font-weight: 600; margin: 0;">Алгоритм сотрудника (читай стандарт)</h2>
+        </div>
+        <div class="grid-2" style="gap: 1rem;">
+            <div>
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div><strong>Смотрим стандарт блюда</strong> — ищем значки✅ ⚠️ и пометку ULTIMA  →</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div><strong>Видим ✅ зеленую галочку</strong> → доставка ULTIMA   в нашем контейнере (как в стандарте, без замен).</div>
+                </div>
+            </div>
+            <div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div><strong>Видим ⚠️ или ULTIMA  →</strong> → используем контейнер под запайку, указанный рядом, + все доп. компоненты (соусники).</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div><strong>Учитываем</strong> особенности сборки заказов от ULTIMA. </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="code-block" style="background: #d4ebff; text-align: center;">
+            🎯 <strong>Главное правило:</strong> для ULTIMA   заказов, если НЕТ зелёной галочки — контейнер под запайку! <i class="fas fa-puzzle-piece"></i>
+        </div>
+    </div>
+
+    <!-- Дополнительная секция: быстрый lookup по контейнерам -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
+        <div class="card animate-block delay-5" style="flex:1; min-width: 200px;">
+            <h3>🔁 Частая замена</h3>
+            <p><strong>ПК-77 / ПК-78 (крышка)</strong> → заменяются на <strong>ПК-47/1 или ПК-52/4Г</strong> (под запайку) если указан ⚠️</p>
+            <div class="ULTIMA -label"><i class="fas-regular fa-note-sticky"></i> Соус может быть упакован отдельно</div>
+        </div>
+        <div class="card animate-block delay-5" style="flex:1; min-width: 200px;">
+            <h3>📌 Распознавание в стандарте</h3>
+            <p>«ULTIMA  → ПК – 47/1 (бокс под запайку)» — это точная команда. <strong>Всегда</strong> приоритетнее стандартной упаковки при заказах ULTIMA .</p>
+        </div>
+        <div class="card animate-block delay-5" style="flex:1; min-width: 200px;">
+             <h3>🧠 Микро-тренировка</h3>
+            <p>Запомни: <strong>"⚠️→ ULTIMA → запайка"</strong>. Зелёная галочка — оставляем.</p>
+        </div>
+    </div>
+
+    <!-- Только короткая подпись об актуальности -->
+    <div style="margin-top: 1rem; text-align: right; font-size: 0.7rem; opacity: 0.6;">
+        <i class="fas-regular fa-clock"></i> Актуально: требования партнёра ULTIMA   (Яндекс Еда)
+    </div>
+</div>
+
+<!-- Микроинтерактив -->
+<script>
+    (function() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if(e.target.closest('.code-block') || e.target.closest('.example-detail')) return;
+                card.style.transition = '0.1s';
+                card.style.boxShadow = '0 0 0 3px #5b9eff, 0 12px 28px -8px #0a2a44';
+                setTimeout(() => {
+                    card.style.boxShadow = '';
+                }, 300);
+            });
+        });
+
+        const headerBadge = document.querySelector('.badge');
+        if(headerBadge) {
+            headerBadge.style.cursor = 'pointer';
+            headerBadge.addEventListener('click', () => {
+                let toast = document.createElement('div');
+                toast.innerText = '☑️ Правило: зеленую галочку не заменяем! ULTIMA  → всегда запайка.';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = '#1f6eb0';
+                toast.style.color = 'white';
+                toast.style.padding = '10px 20px';
+                toast.style.borderRadius = '50px';
+                toast.style.fontSize = '0.85rem';
+                toast.style.zIndex = '999';
+                toast.style.fontWeight = '500';
+                toast.style.backdropFilter = 'blur(10px)';
+                toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 400);
+                }, 2200);
+            });
+        }
+
+        const iconsEx = document.querySelectorAll('.check-green, .exclamation');
+        iconsEx.forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.05)';
+                icon.style.transition = '0.15s';
+            });
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1)';
+            });
+        });
+    })();
+</script>
+</body>
+</html>
