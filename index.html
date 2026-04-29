@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Микрошпаргалка | Стандарт ULTIMA  | Доставка</title>
+    <title>Микрошпаргалка | Стандарт ULTIMA | Доставка</title>
     <!-- Google Fonts + Font Awesome 6 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -70,9 +70,66 @@
         }
         .sub {
             font-size: 1rem;
-            color: #3a6b92;
-            max-width: 600px;
-            margin: 0.75rem auto 0;
+            color: #1e4d7c;
+            font-weight: 500;
+            background: #e2f0ff70;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin: 0.5rem auto 0;
+            white-space: nowrap;
+        }
+        /* для мобильных — чтобы не ломало строку, но при сильном сжатии шрифт уменьшится */
+        @media (max-width: 640px) {
+            .sub {
+                font-size: 0.85rem;
+                white-space: nowrap;
+                overflow-x: auto;
+                max-width: 90vw;
+                display: inline-block;
+            }
+        }
+        .benefit-text {
+            max-width: 700px;
+            margin: 1rem auto 0;
+            font-size: 0.9rem;
+            color: #2c6288;
+            background: #ffffffcc;
+            backdrop-filter: blur(2px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 48px;
+            border: 1px solid rgba(0, 112, 217, 0.2);
+        }
+        /* языковой переключатель */
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1.2rem auto 0.5rem;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            background: #eef3fc;
+            border: none;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.4rem 0.9rem;
+            border-radius: 100px;
+            cursor: pointer;
+            color: #1f6392;
+            transition: all 0.2s;
+            border: 1px solid #cde0f0;
+        }
+        .lang-btn.active {
+            background: #1e6eb0;
+            color: white;
+            border-color: #1e6eb0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .lang-btn:hover {
+            background: #d4e6ff;
+            transform: translateY(-1px);
         }
 
         .card {
@@ -122,7 +179,7 @@
             align-items: center;
             justify-content: center;
         }
-        .ULTIMA -label {
+        .ultima-label {
             background: #136b9c10;
             font-weight: 600;
             font-size: 0.75rem;
@@ -192,7 +249,7 @@
             padding: 0.7rem;
             margin-top: 1rem;
         }
-        .badge-ULTIMA  {
+        .badge-ultima {
             background: #1e6eb0;
             color: white;
             font-size: 0.65rem;
@@ -223,9 +280,19 @@
 <body>
 <div class="container">
     <div class="header animate-block delay-1">
-        <div class="badge"><i class="fas fa-motorcycle"></i> ULTIMA  × Яндекс Еда</div>
+        <div class="badge"><i class="fas fa-motorcycle"></i> ULTIMA × Яндекс Еда</div>
         <h1>📋 Стандарт доставки<br>«Микро-шпаргалка»</h1>
-        <div class="sub">Герметичная упаковка под запайку — главное правило, но есть исключения.</div>
+        <div class="sub" id="mainRuleText">Герметичная упаковка под запайку — главное правило, но есть исключения.</div>
+        <div class="benefit-text" id="benefitText">
+            ⚡ Быстрая подсказка: как правильно упаковать заказы ULTIMA, чтобы избежать ошибок. Помогает за секунды определить нужный контейнер — экономит время и сохраняет качество блюд.
+        </div>
+        <!-- языковой переключатель -->
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ru">🇷🇺 Русский</button>
+            <button class="lang-btn" data-lang="ky">🇰🇬 Кыргызча</button>
+            <button class="lang-btn" data-lang="tg">🇹🇯 Тоҷикӣ</button>
+            <button class="lang-btn" data-lang="uz">🇺🇿 O‘zbekcha</button>
+        </div>
     </div>
 
     <!-- Секция обозначений (2 главных значка) -->
@@ -234,60 +301,60 @@
             <div class="check-green hover-scale">
                 <i class="fas fa-check-circle fa-2x"></i>
             </div>
-            <div class="rule-text">✅ Зелёная галочка</div>
-            <p>В стандарте указана зелёная галочка → доставка для <strong>ULTIMA  </strong> осуществляется <strong>в нашем контейнере</strong> (без замены).</p>
+            <div class="rule-text" data-i18n="greenTitle">✅ Зелёная галочка</div>
+            <p data-i18n="greenDesc">В стандарте указана зелёная галочка → доставка для <strong>ULTIMA</strong> осуществляется <strong>в нашем контейнере</strong> (без замены).</p>
             <div class="code-block">
-                <i class="fas fa-info-circle"></i> Пример: ✅<br>
-                «Упаковка: ПК-77 (+ крышка)» → ничего не меняем.
+                <i class="fas fa-info-circle"></i> <span data-i18n="greenExample">Пример: ✅</span><br>
+                <span data-i18n="greenExampleText">«Упаковка: ПК-77 (+ крышка)» → ничего не меняем.</span>
             </div>
         </div>
         <div class="card animate-block delay-2">
             <div class="exclamation hover-scale">
                 <i class="fas fa-exclamation-triangle fa-2x"></i>
             </div>
-            <div class="rule-text">⚠️ Восклицательный знак / <span class="ULTIMA -label">ULTIMA  →</span></div>
-            <p>Требование использовать <strong>указанный контейнер под запайку</strong> (бокс под запайку). Игнорируем обычный контейнер с крышкой из стандарта.</p>
+            <div class="rule-text" data-i18n="exclamTitle">❗ Восклицательный знак / <span class="ultima-label">ULTIMA →</span></div>
+            <p data-i18n="exclamDesc">Требование использовать <strong>указанный контейнер под запайку</strong> (бокс под запайку). Игнорируем обычный контейнер с крышкой из стандарта.</p>
             <div class="code-block">
-                <i class="fas fa-info-circle"></i> Пример: ⚠️ <br>
-                «ПК-77 (+ крышка) <strong> и ULTIMA  → ПК-47/1 (бокс под запайку)</strong>» → берём ПК-47/1.
+                <i class="fas fa-info-circle"></i> <span data-i18n="exclamExample">Пример: ⚠️</span><br>
+                <span data-i18n="exclamExampleText">«ПК-77 (+ крышка) и ULTIMA → ПК-47/1 (бокс под запайку)» → берём ПК-47/1.</span>
             </div>
         </div>
     </div>
 
     <!-- Примеры из стандарта (реальные блюда) -->
     <div style="margin-bottom: 1rem; margin-top: 0.5rem;">
-        <span class="pill"><i class="fas-regular fa-cube"></i> Живые примеры</span>
-        <h2 style="margin: 0.75rem 0 0.5rem; font-weight: 600;">⚡ Разбор блюд (ULTIMA )</h2>
+        <span class="pill"><i class="fas-regular fa-cube"></i> <span data-i18n="liveExamplesTitle">Живые примеры</span></span>
+        <h2 style="margin: 0.75rem 0 0.5rem; font-weight: 600;" data-i18n="dishesTitle">⚡ Разбор блюд (ULTIMA)</h2>
     </div>
     <div class="grid-3">
         <!-- Пример 1: Шоколадный медовик -->
         <div class="card animate-block delay-3">
             <i class="fas fa-cake-candles" style="font-size: 2rem; color: #ab7b54;"></i>
-            <h3 style="margin: 0.5rem 0 0.25rem;">🍫 Шоколадный медовик</h3>
+            <h3 style="margin: 0.5rem 0 0.25rem;">🍫 <span data-i18n="dish1Name">Шоколадный медовик</span></h3>
             <div class="code-block" style="background:#fff2e5;">
-                <span class="std-label">📄 Стандарт упаковки:</span>
+                <span class="std-label" data-i18n="stdPackLabel">📄 Стандарт упаковки:</span>
                 <img src="foto1.png" alt="Стандарт: ПК-52/4Г, без секции (бокс под запайку)">
             </div>
             <div style="margin-top: 0.75rem;">
-                <span class="badge-ULTIMA "><i class="fas fa-check-circle"></i> ULTIMA -доставка</span>
-                <p style="margin-top: 0.5rem;">✅ Контейнер <strong>уже под запайку</strong> → используем <strong>ПК-52/4Г</strong> (без замен).<br>
-                <span class="pill"><i class="fas-regular fa-comment"></i> Исключений нет, всё по стандарту.</span></p>
+                <span class="badge-ultima"><i class="fas fa-check-circle"></i> <span data-i18n="ultimaDelivery">ULTIMA-доставка</span></span>
+                <p style="margin-top: 0.5rem;" data-i18n="dish1Action">✅ Контейнер <strong>уже под запайку</strong> → используем <strong>ПК-52/4Г</strong> (без замен).</p>
+                <span class="pill" data-i18n="dish1Note"><i class="fas-regular fa-comment"></i> Исключений нет, всё по стандарту.</span>
             </div>
         </div>
 
-        <!-- Пример 2: Чизкейк Сан Себастьян с шоколадом -->
+        <!-- Пример 2: Чизкейк Сан Себастьян -->
         <div class="card animate-block delay-3">
             <i class="fas fa-cheese" style="font-size: 2rem; color:#e3b87c;"></i>
-            <h3 style="margin: 0.5rem 0 0.25rem;">🍰 Чизкейк Сан Себастьян </h3>
+            <h3 style="margin: 0.5rem 0 0.25rem;">🍰 <span data-i18n="dish2Name">Чизкейк Сан Себастьян</span></h3>
             <div class="code-block" style="background:#fff0e0;">
-                <span class="std-label">📄 Стандарт (ULTIMA  →):</span>
-                <img src="foto2.png" alt="Стандарт: ULTIMA  → ПК-47/1 (бокс под запайку), соусник 50 мл">
+                <span class="std-label" data-i18n="stdUltimaLabel">📄 Стандарт (ULTIMA →):</span>
+                <img src="foto2.png" alt="Стандарт: ULTIMA → ПК-47/1 (бокс под запайку), соусник 50 мл">
             </div>
             <div style="margin-top: 0.75rem;">
-                <span class="badge-ULTIMA "><i class="fas fa-tools"></i> Действие для ULTIMA </span>
-                <p><i class="fas fa-exchange-alt arrow-icon"></i> Меняем ПК-77 на <strong>ПК-47/1 (под запайку)</strong>.</p>
-                <div class="example-detail">
-                    <i class="fas fa-lightbulb"></i> <strong>Почему?</strong> ⚠️+ ULTIMA  → требуется контейнер под запайку.
+                <span class="badge-ultima"><i class="fas fa-tools"></i> <span data-i18n="dish2ActionLabel">Действие для ULTIMA</span></span>
+                <p data-i18n="dish2ActionText"><i class="fas fa-exchange-alt arrow-icon"></i> Меняем ПК-77 на <strong>ПК-47/1 (под запайку)</strong>.</p>
+                <div class="example-detail" data-i18n="dish2Reason">
+                    <i class="fas fa-lightbulb"></i> <strong>Почему?</strong> ⚠️ + ULTIMA → требуется контейнер под запайку.
                 </div>
             </div>
         </div>
@@ -295,16 +362,16 @@
         <!-- Пример 3: Салат с кальмаром и шпинатом -->
         <div class="card animate-block delay-3">
             <i class="fas fa-salad" style="font-size: 2rem; color:#6fbf4c;"></i>
-            <h3 style="margin: 0.5rem 0 0.25rem;">🦑 Салат с кальмаром и шпинатом</h3>
+            <h3 style="margin: 0.5rem 0 0.25rem;">🦑 <span data-i18n="dish3Name">Салат с кальмаром и шпинатом</span></h3>
             <div class="code-block" style="background:#e8f0fe;">
-                <span class="std-label">📄 Стандарт (воскл. знаки):</span>
+                <span class="std-label" data-i18n="stdExclamLabel">📄 Стандарт (воскл. знаки):</span>
                 <img src="foto3.png" alt="Стандарт: ПК-78 (крышка) → ПК-52/4Г под запайку + соусник 50 мл">
             </div>
             <div style="margin-top: 0.75rem;">
-                <span class="badge-ULTIMA "><i class="fas fa-box-open"></i> Упаковка ULTIMA </span>
-                <p><i class="fas fa-exchange-alt arrow-icon"></i> Меняем ПК-78 на ПК-52/4Г (под запайку)</strong> + <strong>соусник 50 мл.</strong><br>
+                <span class="badge-ultima"><i class="fas fa-box-open"></i> <span data-i18n="dish3PackLabel">Упаковка ULTIMA</span></span>
+                <p data-i18n="dish3ActionText"><i class="fas fa-exchange-alt arrow-icon"></i> Меняем ПК-78 на <strong>ПК-52/4Г (под запайку)</strong> + <strong>соусник 50 мл.</strong><br>
                 ❌ Не используем ПК-78</p>
-                <div class="example-detail">
+                <div class="example-detail" data-i18n="dish3Detail">
                     <i class="fas fa-clipboard-list"></i> В стандарте стоят 2х ⚠️ = используется два вида упаковки.
                 </div>
             </div>
@@ -315,61 +382,277 @@
     <div class="card animate-block delay-4" style="margin-bottom: 1.5rem; background: rgba(255,255,245,0.95);">
         <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1.2rem;">
             <i class="fas fa-diagram-project fa-xl" style="color: #2c7ed1;"></i>
-            <h2 style="font-weight: 600; margin: 0;">Алгоритм сотрудника (читай стандарт)</h2>
+            <h2 style="font-weight: 600; margin: 0;" data-i18n="algorithmTitle">Алгоритм сотрудника (читай стандарт)</h2>
         </div>
         <div class="grid-2" style="gap: 1rem;">
             <div>
                 <div class="step-item">
                     <div class="step-num">1</div>
-                    <div><strong>Смотрим стандарт блюда</strong> — ищем значки✅ ⚠️ и пометку ULTIMA  →</div>
+                    <div data-i18n="step1">Смотрим стандарт блюда — ищем значки ✅ ⚠️ и пометку ULTIMA →</div>
                 </div>
                 <div class="step-item">
                     <div class="step-num">2</div>
-                    <div><strong>Видим ✅ зеленую галочку</strong> → доставка ULTIMA   в нашем контейнере (как в стандарте, без замен).</div>
+                    <div data-i18n="step2">Видим ✅ зеленую галочку → доставка ULTIMA в нашем контейнере (как в стандарте, без замен).</div>
                 </div>
             </div>
             <div>
                 <div class="step-item">
                     <div class="step-num">3</div>
-                    <div><strong>Видим ⚠️ или ULTIMA  →</strong> → используем контейнер под запайку, указанный рядом, + все доп. компоненты (соусники).</div>
+                    <div data-i18n="step3">Видим ⚠️ или ULTIMA → → используем контейнер под запайку, указанный рядом, + все доп. компоненты (соусники).</div>
                 </div>
                 <div class="step-item">
                     <div class="step-num">4</div>
-                    <div><strong>Учитываем</strong> особенности сборки заказов от ULTIMA. </div>
+                    <div data-i18n="step4">Учитываем особенности сборки заказов от ULTIMA.</div>
                 </div>
             </div>
         </div>
         <hr>
-        <div class="code-block" style="background: #d4ebff; text-align: center;">
-            🎯 <strong>Главное правило:</strong> для ULTIMA   заказов, если НЕТ зелёной галочки — контейнер под запайку! <i class="fas fa-puzzle-piece"></i>
+        <div class="code-block" style="background: #d4ebff; text-align: center;" data-i18n="mainRuleFooter">
+            🎯 <strong>Главное правило:</strong> для ULTIMA заказов, если НЕТ зелёной галочки — контейнер под запайку! <i class="fas fa-puzzle-piece"></i>
         </div>
     </div>
 
     <!-- Дополнительная секция: быстрый lookup по контейнерам -->
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
         <div class="card animate-block delay-5" style="flex:1; min-width: 200px;">
-            <h3>🔁 Частая замена</h3>
-            <p><strong>ПК-77 / ПК-78 (крышка)</strong> → заменяются на <strong>ПК-47/1 или ПК-52/4Г</strong> (под запайку) если указан ⚠️</p>
-            <div class="ULTIMA -label"><i class="fas-regular fa-note-sticky"></i> Соус может быть упакован отдельно</div>
+            <h3 data-i18n="quickReplaceTitle">🔁 Частая замена</h3>
+            <p data-i18n="quickReplaceText"><strong>ПК-77 / ПК-78 (крышка)</strong> → заменяются на <strong>ПК-47/1 или ПК-52/4Г</strong> (под запайку) если указан ⚠️</p>
+            <div class="ultima-label" data-i18n="sauceNote"><i class="fas-regular fa-note-sticky"></i> Соус может быть упакован отдельно</div>
         </div>
         <div class="card animate-block delay-5" style="flex:1; min-width: 200px;">
-            <h3>📌 Распознавание в стандарте</h3>
-            <p>«ULTIMA  → ПК – 47/1 (бокс под запайку)» — это точная команда. <strong>Всегда</strong> приоритетнее стандартной упаковки при заказах ULTIMA .</p>
+            <h3 data-i18n="recogTitle">📌 Распознавание в стандарте</h3>
+            <p data-i18n="recogText">«ULTIMA → ПК – 47/1 (бокс под запайку)» — это точная команда. <strong>Всегда</strong> приоритетнее стандартной упаковки при заказах ULTIMA.</p>
         </div>
         <div class="card animate-block delay-5" style="flex:1; min-width: 200px;">
-             <h3>🧠 Микро-тренировка</h3>
-            <p>Запомни: <strong>"⚠️→ ULTIMA → запайка"</strong>. Зелёная галочка — оставляем.</p>
+            <h3 data-i18n="microTitle">🧠 Микро-тренировка</h3>
+            <p data-i18n="microText">Запомни: <strong>"⚠️ → ULTIMA → запайка"</strong>. Зелёная галочка — оставляем.</p>
         </div>
     </div>
 
-    <!-- Только короткая подпись об актуальности -->
+    <!-- Актуальность -->
     <div style="margin-top: 1rem; text-align: right; font-size: 0.7rem; opacity: 0.6;">
-        <i class="fas-regular fa-clock"></i> Актуально: требования партнёра ULTIMA   (Яндекс Еда)
+        <i class="fas-regular fa-clock"></i> <span data-i18n="actualText">Актуально: требования партнёра ULTIMA (Яндекс Еда)</span>
     </div>
 </div>
 
-<!-- Микроинтерактив -->
 <script>
+    // Мультиязычный контент
+    const translations = {
+        ru: {
+            mainRule: "Герметичная упаковка под запайку — главное правило, но есть исключения.",
+            benefit: "⚡ Быстрая подсказка: как правильно упаковать заказы ULTIMA, чтобы избежать ошибок. Помогает за секунды определить нужный контейнер — экономит время и сохраняет качество блюд.",
+            greenTitle: "✅ Зелёная галочка",
+            greenDesc: "В стандарте указана зелёная галочка → доставка для <strong>ULTIMA</strong> осуществляется <strong>в нашем контейнере</strong> (без замены).",
+            greenExample: "Пример: ✅",
+            greenExampleText: "«Упаковка: ПК-77 (+ крышка)» → ничего не меняем.",
+            exclamTitle: "❗ Восклицательный знак / ULTIMA →",
+            exclamDesc: "Требование использовать <strong>указанный контейнер под запайку</strong> (бокс под запайку). Игнорируем обычный контейнер с крышкой из стандарта.",
+            exclamExample: "Пример: ⚠️",
+            exclamExampleText: "«ПК-77 (+ крышка) и ULTIMA → ПК-47/1 (бокс под запайку)» → берём ПК-47/1.",
+            liveExamplesTitle: "Живые примеры",
+            dishesTitle: "⚡ Разбор блюд (ULTIMA)",
+            dish1Name: "Шоколадный медовик",
+            ultimaDelivery: "ULTIMA-доставка",
+            dish1Action: "✅ Контейнер <strong>уже под запайку</strong> → используем <strong>ПК-52/4Г</strong> (без замен).",
+            dish1Note: "📌 Исключений нет, всё по стандарту.",
+            stdPackLabel: "📄 Стандарт упаковки:",
+            dish2Name: "Чизкейк Сан Себастьян",
+            stdUltimaLabel: "📄 Стандарт (ULTIMA →):",
+            dish2ActionLabel: "Действие для ULTIMA",
+            dish2ActionText: "Меняем ПК-77 на <strong>ПК-47/1 (под запайку)</strong>.",
+            dish2Reason: "<i class='fas fa-lightbulb'></i> <strong>Почему?</strong> ⚠️ + ULTIMA → требуется контейнер под запайку.",
+            dish3Name: "Салат с кальмаром и шпинатом",
+            stdExclamLabel: "📄 Стандарт (воскл. знаки):",
+            dish3PackLabel: "Упаковка ULTIMA",
+            dish3ActionText: "Меняем ПК-78 на <strong>ПК-52/4Г (под запайку)</strong> + <strong>соусник 50 мл.</strong><br>❌ Не используем ПК-78",
+            dish3Detail: "<i class='fas fa-clipboard-list'></i> В стандарте стоят 2х ⚠️ = строгая замена упаковки.",
+            algorithmTitle: "Алгоритм сотрудника (читай стандарт)",
+            step1: "Смотрим стандарт блюда — ищем значки ✅ ⚠️ и пометку ULTIMA →",
+            step2: "Видим ✅ зеленую галочку → доставка ULTIMA в нашем контейнере (как в стандарте, без замен).",
+            step3: "Видим ⚠️ или ULTIMA → → используем контейнер под запайку, указанный рядом, + все доп. компоненты (соусники).",
+            step4: "Учитываем особенности сборки заказов от ULTIMA.",
+            mainRuleFooter: "🎯 <strong>Главное правило:</strong> для ULTIMA заказов, если НЕТ зелёной галочки — контейнер под запайку! <i class='fas fa-puzzle-piece'></i>",
+            quickReplaceTitle: "🔁 Частая замена",
+            quickReplaceText: "<strong>ПК-77 / ПК-78 (крышка)</strong> → заменяются на <strong>ПК-47/1 или ПК-52/4Г</strong> (под запайку) если указан ⚠️",
+            sauceNote: "🥣 Соус может быть упакован отдельно",
+            recogTitle: "📌 Распознавание в стандарте",
+            recogText: "«ULTIMA → ПК – 47/1 (бокс под запайку)» — это точная команда. <strong>Всегда</strong> приоритетнее стандартной упаковки при заказах ULTIMA.",
+            microTitle: "🧠 Микро-тренировка",
+            microText: "Запомни: <strong>\"⚠️ → ULTIMA → запайка\"</strong>. Зелёная галочка — оставляем.",
+            actualText: "Актуально: требования партнёра ULTIMA (Яндекс Еда)"
+        },
+        ky: {
+            mainRule: "Герметикалык запайкалоочу таңгак — негизги эреже, бирок өзгөчөлүктөр бар.",
+            benefit: "⚡ Тез кеңеш: ULTIMA заказдарын катасыз таңгактоо боюнча жардам. Керектүү контейнерди секундада аныктоого жардам берет — убакытты үнөмдөйт жана тамактын сапатын сактайт.",
+            greenTitle: "✅ Жашыл белги",
+            greenDesc: "Стандартта жашыл белги көрсөтүлгөн → <strong>ULTIMA</strong> жеткирүү <strong>биздин контейнерде</strong> (алмаштыруусуз) жүзөгө ашырылат.",
+            greenExample: "Мисал: ✅",
+            greenExampleText: "«Таңгак: ПК-77 (+ капкагы)» → эч нерсени өзгөртпөйбүз.",
+            exclamTitle: "❗ Көп чекит / ULTIMA →",
+            exclamDesc: "Көрсөтүлгөн <strong>запайка контейнерин</strong> колдонуу талабы. Стандарттагы кадимки капкактуу контейнерди колдонобуз.",
+            exclamExample: "Мисал: ⚠️",
+            exclamExampleText: "«ПК-77 (+ капкагы) жана ULTIMA → ПК-47/1 (запайка астындагы куту)» → ПК-47/1 алабыз.",
+            liveExamplesTitle: "Реалдуу мисалдар",
+            dishesTitle: "⚡ Тамактарды талдоо (ULTIMA)",
+            dish1Name: "Шоколаддуу бал татымал",
+            ultimaDelivery: "ULTIMA-жеткирүү",
+            dish1Action: "✅ Контейнер <strong>запайкага даяр</strong> → <strong>ПК-52/4Г</strong> колдонобуз (алмаштыруусуз).",
+            dish1Note: "📌 Өзгөчөлүк жок, стандарт боюнча.",
+            stdPackLabel: "📄 Стандарттык таңгак:",
+            dish2Name: "Чизкейк Сан Себастьян",
+            stdUltimaLabel: "📄 Стандарт (ULTIMA →):",
+            dish2ActionLabel: "ULTIMA үчүн аракет",
+            dish2ActionText: "ПК-77 ордуна <strong>ПК-47/1 (запайка астында)</strong> алабыз.",
+            dish2Reason: "<i class='fas fa-lightbulb'></i> <strong>Эмне үчүн?</strong> ⚠️ + ULTIMA → запайка контейнери талап кылынат.",
+            dish3Name: "Кальмар жана шпинат менен салат",
+            stdExclamLabel: "📄 Стандарт (көп чекиттер):",
+            dish3PackLabel: "ULTIMA таңгагы",
+            dish3ActionText: "ПК-78 ордуна <strong>ПК-52/4Г (запайка)</strong> + <strong>50 мл соус идиш</strong> алабыз.<br>❌ ПК-78 колдонобуз",
+            dish3Detail: "<i class='fas fa-clipboard-list'></i> Стандартта 2х ⚠️ = катуу алмаштыруу.",
+            algorithmTitle: "Кызматкердин алгоритми (стандартты оку)",
+            step1: "Тамактын стандартын карайбыз — ✅ ⚠️ белгилерин жана ULTIMA → жазуусун издеңиз.",
+            step2: "✅ жашыл белгини көрсөңүз → ULTIMA биздин контейнерде жеткирилет (стандарттагыдай, алмаштыруусуз).",
+            step3: "⚠️ же ULTIMA → көрсөңүз → көрсөтүлгөн запайка контейнерин + бардык кошумча бөлүктөрдү (соус идиштерди) колдонуңуз.",
+            step4: "ULTIMA заказдарын даярдоо өзгөчөлүктөрүн эске алыңыз.",
+            mainRuleFooter: "🎯 <strong>Негизги эреже:</strong> ULTIMA заказдарында жашыл белги ЖОК болсо — запайка контейнери!",
+            quickReplaceTitle: "🔁 Көп алмаштырылуучу",
+            quickReplaceText: "<strong>ПК-77 / ПК-78 (капкак)</strong> → эгер ⚠️ көрсөтүлсө, <strong>ПК-47/1 же ПК-52/4Г</strong> (запайка астында) менен алмаштырылат.",
+            sauceNote: "🥣 Соус өзүнчө таңгакталышы мүмкүн",
+            recogTitle: "📌 Стандартта таануу",
+            recogText: "«ULTIMA → ПК-47/1» — бул так буйрук. ULTIMA заказдарында стандарттык таңгактан артыкчылыктуу.",
+            microTitle: "🧠 Микро-машыгуу",
+            microText: "Эсте сакта: <strong>\"⚠️ → ULTIMA → запайка\"</strong>. Жашыл белги — калтырабыз.",
+            actualText: "Актуалдуу: өнөктөш ULTIMA (Яндекс Еда) талаптары"
+        },
+        tg: {
+            mainRule: "Бастабанӣ бо мӯҳри герметикӣ — қоидаи асосӣ, аммо истисноҳо мавҷуданд.",
+            benefit: "⚡ Маслиҳати зуд: чӣ гуна фармоишҳои ULTIMA-ро дуруст бастабандӣ кардан, то хатогиҳо пешгирӣ шаванд. Дар сония контейнери заруриро муайян мекунад — вақтро сарфа мекунад ва сифати таомҳоро нигоҳ медорад.",
+            greenTitle: "✅ Аломати сабз",
+            greenDesc: "Дар стандарт аломати сабз нишон дода шудааст → расонидани <strong>ULTIMA</strong> <strong>дар контейнери мо</strong> (бе иваз кардан) анҷом дода мешавад.",
+            greenExample: "Мисол: ✅",
+            greenExampleText: "«Бастабандӣ: ПК-77 (+ сарпӯш)» → ҳеҷ чизро иваз намекунем.",
+            exclamTitle: "❗ Аломати нидо / ULTIMA →",
+            exclamDesc: "Талаби истифодаи <strong>контейнери муҳршаванда</strong>. Контейнери оддии сарпӯшдор аз стандартро рад мекунем.",
+            exclamExample: "Мисол: ⚠️",
+            exclamExampleText: "«ПК-77 (+ сарпӯш) ва ULTIMA → ПК-47/1 (ҷудоии муҳршаванда)» → ПК-47/1 мегирем.",
+            liveExamplesTitle: "Мисолҳои воқеӣ",
+            dishesTitle: "⚡ Таҳлили таомҳо (ULTIMA)",
+            dish1Name: "Асалаки шоколадӣ",
+            ultimaDelivery: "Расонидани ULTIMA",
+            dish1Action: "✅ Контейнер <strong>аллакай муҳршаванда</strong> → <strong>ПК-52/4Г</strong> (бе иваз).",
+            dish1Note: "📌 Истисно нест, ҳама мувофиқи стандарт.",
+            stdPackLabel: "📄 Стандарти бастабандӣ:",
+            dish2Name: "Чизкейк Сан Себастян",
+            stdUltimaLabel: "📄 Стандарт (ULTIMA →):",
+            dish2ActionLabel: "Амал барои ULTIMA",
+            dish2ActionText: "ПК-77 ба <strong>ПК-47/1 (муҳршаванда)</strong> иваз мекунем.",
+            dish2Reason: "<i class='fas fa-lightbulb'></i> <strong>Чаро?</strong> ⚠️ + ULTIMA → контейнери муҳршаванда зарур аст.",
+            dish3Name: "Салат бо кальмар ва испинох",
+            stdExclamLabel: "📄 Стандарт (аломатҳои нидо):",
+            dish3PackLabel: "Бастабандии ULTIMA",
+            dish3ActionText: "ПК-78 ба <strong>ПК-52/4Г (муҳршаванда)</strong> + <strong>соусник 50 мл.</strong> иваз мекунем.<br>❌ ПК-78 истифода намекунем.",
+            dish3Detail: "<i class='fas fa-clipboard-list'></i> Дар стандарт 2х ⚠️ = ивазкунии қатъӣ.",
+            algorithmTitle: "Алгоритми корманд (стандартро хонед)",
+            step1: "Стандарти таомро мебинем — аломатҳои ✅ ⚠️ ва навишти ULTIMA → ҷустуҷӯ кунед.",
+            step2: "Аломати сабз ✅ дидем → расонидани ULTIMA дар контейнери мо (чунон ки дар стандарт, бе иваз).",
+            step3: "⚠️ ё ULTIMA → дидем → контейнери муҳршавандаи нишондодашуда + ҳамаи қисмҳои иловагиро (соусникҳо) истифода мебарем.",
+            step4: "Хусусиятҳои тайёр кардани фармоишҳои ULTIMA-ро ба назар мегирем.",
+            mainRuleFooter: "🎯 <strong>Қоидаи асосӣ:</strong> барои фармоишҳои ULTIMA, агар аломати сабз НАБОШАД — контейнери муҳршаванда!",
+            quickReplaceTitle: "🔁 Ивазкунии зуд-зуд",
+            quickReplaceText: "<strong>ПК-77 / ПК-78 (сарпӯш)</strong> → агар ⚠️ нишон дода шуда бошад, ба <strong>ПК-47/1 ё ПК-52/4Г</strong> (муҳршаванда) иваз карда мешавад.",
+            sauceNote: "🥣 Соус метавонад алоҳида бастабандӣ шавад",
+            recogTitle: "📌 Шинохтан дар стандарт",
+            recogText: "«ULTIMA → ПК-47/1» — дастури дақиқ аст. Ҳамеша дар фармоишҳои ULTIMA нисбат ба бастабандии стандартӣ афзалият дорад.",
+            microTitle: "🧠 Микро-машқ",
+            microText: "Ба ёд дор: <strong>\"⚠️ → ULTIMA → муҳршаванда\"</strong>. Аломати сабз — мегузорем.",
+            actualText: "Актуалӣ: талаботи шарики ULTIMA (Яндекс Еда)"
+        },
+        uz: {
+            mainRule: "Germetik muhrlanadigan qadoq — asosiy qoida, lekin istisnolar mavjud.",
+            benefit: "⚡ Tezkor maslahat: ULTIMA buyurtmalarini xatosiz qadoqlash uchun qo‘llanma. Kerakli idishni soniyada aniqlashga yordam beradi — vaqtni tejaydi va taom sifatini saqlaydi.",
+            greenTitle: "✅ Yashil belgi",
+            greenDesc: "Standartda yashil belgi ko‘rsatilgan → <strong>ULTIMA</strong> yetkazib berish <strong>bizning idishimizda</strong> (almashtirilmasdan) amalga oshiriladi.",
+            greenExample: "Misol: ✅",
+            greenExampleText: "«Qadoq: PK-77 (+ qopqoq)» → hech narsani o‘zgartirmaymiz.",
+            exclamTitle: "❗ Undov belgisi / ULTIMA →",
+            exclamDesc: "Ko‘rsatilgan <strong>muhrlanadigan idishni</strong> ishlatish talabi. Standartdagi oddiy qopqoqli idishni e'tiborsiz qoldiramiz.",
+            exclamExample: "Misol: ⚠️",
+            exclamExampleText: "«PK-77 (+ qopqoq) va ULTIMA → PK-47/1 (muhrlanadigan quti)» → PK-47/1 olamiz.",
+            liveExamplesTitle: "Jonli misollar",
+            dishesTitle: "⚡ Taomlar tahlili (ULTIMA)",
+            dish1Name: "Shokoladli asalli pirojnoe",
+            ultimaDelivery: "ULTIMA-yetkazib berish",
+            dish1Action: "✅ Idish <strong>muhrlashga tayyor</strong> → <strong>PK-52/4G</strong> dan foydalanamiz (almashtirilmaydi).",
+            dish1Note: "📌 Istisnolar yo‘q, hammasi standart bo‘yicha.",
+            stdPackLabel: "📄 Standart qadoq:",
+            dish2Name: "San Sebastyan chizkeyki",
+            stdUltimaLabel: "📄 Standart (ULTIMA →):",
+            dish2ActionLabel: "ULTIMA uchun amal",
+            dish2ActionText: "PK-77 ni <strong>PK-47/1 (muhrlanadigan)</strong> ga almashtiramiz.",
+            dish2Reason: "<i class='fas fa-lightbulb'></i> <strong>Nima uchun?</strong> ⚠️ + ULTIMA → muhrlanadigan idish talab qilinadi.",
+            dish3Name: "Kalmar va ismaloqli salat",
+            stdExclamLabel: "📄 Standart (undov belgilari):",
+            dish3PackLabel: "ULTIMA qadoq",
+            dish3ActionText: "PK-78 ni <strong>PK-52/4G (muhrlanadigan)</strong> + <strong>50 ml souslik</strong> ga almashtiramiz.<br>❌ PK-78 ishlatilmaydi",
+            dish3Detail: "<i class='fas fa-clipboard-list'></i> Standartda 2x ⚠️ = qat'iy almashtirish.",
+            algorithmTitle: "Xodim algoritmi (standartni o‘qing)",
+            step1: "Taom standartini ko‘rib chiqamiz — ✅ ⚠️ belgilari va ULTIMA → yozuvini qidiring.",
+            step2: "✅ yashil belgini ko‘rsangiz → ULTIMA yetkazib berish bizning idishimizda (standartdagi kabi, almashtirilmasdan).",
+            step3: "⚠️ yoki ULTIMA → ko‘rsangiz → ko‘rsatilgan muhrlanadigan idishni + barcha qo‘shimcha qismlarni (sousliklarni) ishlating.",
+            step4: "ULTIMA buyurtmalarini tayyorlash xususiyatlarini hisobga oling.",
+            mainRuleFooter: "🎯 <strong>Asosiy qoida:</strong> ULTIMA buyurtmalari uchun yashil belgi YO‘Q bo‘lsa — muhrlanadigan idish!",
+            quickReplaceTitle: "🔁 Tez-tez almashtiriladigan",
+            quickReplaceText: "<strong>PK-77 / PK-78 (qopqoq)</strong> → agar ⚠️ ko‘rsatilgan bo‘lsa, <strong>PK-47/1 yoki PK-52/4G</strong> (muhrlanadigan) ga almashtiriladi.",
+            sauceNote: "🥣 Sous alohida qadoqlanishi mumkin",
+            recogTitle: "📌 Standartda aniqlash",
+            recogText: "«ULTIMA → PK-47/1» — aniq buyruq. ULTIMA buyurtmalarida standart qadoqdan doim ustunlikka ega.",
+            microTitle: "🧠 Mikro-mashq",
+            microText: "Esda tut: <strong>\"⚠️ → ULTIMA → muhrlanadigan\"</strong>. Yashil belgi — qoldiramiz.",
+            actualText: "Amaldagi: ULTIMA hamkori (Yandex Yeda) talablari"
+        }
+    };
+
+    let currentLang = 'ru';
+
+    function applyLanguage(lang) {
+        const t = translations[lang];
+        if (!t) return;
+        // текстовые элементы с атрибутом data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) {
+                // Если внутри есть HTML разметка для strong и пр., используем innerHTML
+                el.innerHTML = t[key];
+            }
+        });
+        // отдельные элементы без data-i18n
+        const mainRuleElem = document.getElementById('mainRuleText');
+        if (mainRuleElem) mainRuleElem.innerText = t.mainRule;
+        const benefitElem = document.getElementById('benefitText');
+        if (benefitElem) benefitElem.innerHTML = t.benefit;
+        
+        // Обновить активную кнопку
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        currentLang = lang;
+    }
+
+    // Инициализация переключателей
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang) applyLanguage(lang);
+        });
+    });
+    // Установить русский по умолчанию
+    applyLanguage('ru');
+
+    // Микроинтерактив (клик по карточке и подсказка)
     (function() {
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
@@ -388,7 +671,11 @@
             headerBadge.style.cursor = 'pointer';
             headerBadge.addEventListener('click', () => {
                 let toast = document.createElement('div');
-                toast.innerText = '☑️ Правило: зеленую галочку не заменяем! ULTIMA  → всегда запайка.';
+                const tipText = currentLang === 'ru' ? '☑️ Правило: зеленую галочку не заменяем! ULTIMA → всегда запайка.' :
+                                (currentLang === 'ky' ? '☑️ Эреже: жашыл белгини алмаштырбайбыз! ULTIMA → дайыма запайка.' :
+                                (currentLang === 'tg' ? '☑️ Қоида: аломати сабзро иваз намекунем! ULTIMA → ҳамеша муҳршаванда.' :
+                                '☑️ Qoida: yashil belgini almashtirmaymiz! ULTIMA → doim muhrlanadigan.'));
+                toast.innerText = tipText;
                 toast.style.position = 'fixed';
                 toast.style.bottom = '20px';
                 toast.style.left = '50%';
